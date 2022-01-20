@@ -1,0 +1,1191 @@
+{
+  "contractName": "IERC223Recipient",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "tokenReceived",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"tokenReceived\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"tokenReceived(address,uint256,bytes)\":{\"details\":\"Standard ERC223 function that will handle incoming token transfers.\",\"params\":{\"_data\":\"Transaction metadata.\",\"_from\":\"Token sender address.\",\"_value\":\"Amount of tokens.\"}}},\"title\":\"Contract that will work with ERC223 tokens.\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IERC223Recipient.sol\":\"IERC223Recipient\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IERC223Recipient.sol\":{\"keccak256\":\"0xbcf8246e81c152597bb268a11386de8aa226c3efe3e4df14ee7c7f8557dbdaad\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://2efd9e7534bb6ec73a832998a89a7008a546c2a8476442cc63c0e2eca049509d\",\"dweb:/ipfs/QmS5wjGvHWwEmaZwP3idtDUCRaPdRMdKrRQp7fReNquxgk\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity ^0.8.0;\r\n\r\n /**\r\n * @title Contract that will work with ERC223 tokens.\r\n */\r\n \r\nabstract contract IERC223Recipient {\r\n\r\n\r\n struct ERC223TransferInfo\r\n    {\r\n        address token_contract;\r\n        address sender;\r\n        uint256 value;\r\n        bytes   data;\r\n    }\r\n    \r\n    ERC223TransferInfo private tkn;\r\n    \r\n/**\r\n * @dev Standard ERC223 function that will handle incoming token transfers.\r\n *\r\n * @param _from  Token sender address.\r\n * @param _value Amount of tokens.\r\n * @param _data  Transaction metadata.\r\n */\r\n    function tokenReceived(address _from, uint _value, bytes memory _data) public virtual\r\n    {\r\n        /**\r\n         * @dev Note that inside of the token transaction handler the actual sender of token transfer is accessible via the tkn.sender variable\r\n         * (analogue of msg.sender for Ether transfers)\r\n         * \r\n         * tkn.value - is the amount of transferred tokens\r\n         * tkn.data  - is the \"metadata\" of token transfer\r\n         * tkn.token_contract is most likely equal to msg.sender because the token contract typically invokes this function\r\n        */\r\n        tkn.token_contract = msg.sender;\r\n        tkn.sender         = _from;\r\n        tkn.value          = _value;\r\n        tkn.data           = _data;\r\n        \r\n        // ACTUAL CODE\r\n    }\r\n}",
+  "sourcePath": "C:\\Users\\buvan\\OneDrive\\Desktop\\tt\\contracts\\IERC223Recipient.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/IERC223Recipient.sol",
+    "exportedSymbols": {
+      "IERC223Recipient": [
+        934
+      ]
+    },
+    "id": 935,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 884,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:7"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 885,
+          "nodeType": "StructuredDocumentation",
+          "src": "65:63:7",
+          "text": " @title Contract that will work with ERC223 tokens."
+        },
+        "fullyImplemented": true,
+        "id": 934,
+        "linearizedBaseContracts": [
+          934
+        ],
+        "name": "IERC223Recipient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IERC223Recipient.ERC223TransferInfo",
+            "id": 894,
+            "members": [
+              {
+                "constant": false,
+                "id": 887,
+                "mutability": "mutable",
+                "name": "token_contract",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "218:22:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 886,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "218:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 889,
+                "mutability": "mutable",
+                "name": "sender",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "251:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 888,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "251:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 891,
+                "mutability": "mutable",
+                "name": "value",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "276:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 890,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "276:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 893,
+                "mutability": "mutable",
+                "name": "data",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "300:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 892,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "300:5:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ERC223TransferInfo",
+            "nodeType": "StructDefinition",
+            "scope": 934,
+            "src": "176:144:7",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 897,
+            "mutability": "mutable",
+            "name": "tkn",
+            "nodeType": "VariableDeclaration",
+            "scope": 934,
+            "src": "332:30:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+              "typeString": "struct IERC223Recipient.ERC223TransferInfo"
+            },
+            "typeName": {
+              "id": 896,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 895,
+                "name": "ERC223TransferInfo",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 894,
+                "src": "332:18:7"
+              },
+              "referencedDeclaration": 894,
+              "src": "332:18:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage_ptr",
+                "typeString": "struct IERC223Recipient.ERC223TransferInfo"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 932,
+              "nodeType": "Block",
+              "src": "673:681:7",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 912,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 907,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1169:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 909,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "token_contract",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 887,
+                      "src": "1169:18:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 910,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "1190:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 911,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "1190:10:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1169:31:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 913,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1169:31:7"
+                },
+                {
+                  "expression": {
+                    "id": 918,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 914,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1211:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 916,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 889,
+                      "src": "1211:10:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 917,
+                      "name": "_from",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 900,
+                      "src": "1232:5:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1211:26:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 919,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1211:26:7"
+                },
+                {
+                  "expression": {
+                    "id": 924,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 920,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1248:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 922,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 891,
+                      "src": "1248:9:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 923,
+                      "name": "_value",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 902,
+                      "src": "1269:6:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1248:27:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 925,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1248:27:7"
+                },
+                {
+                  "expression": {
+                    "id": 930,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 926,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1286:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 928,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "data",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 893,
+                      "src": "1286:8:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage",
+                        "typeString": "bytes storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 929,
+                      "name": "_data",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 904,
+                      "src": "1307:5:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes memory"
+                      }
+                    },
+                    "src": "1286:26:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage",
+                      "typeString": "bytes storage ref"
+                    }
+                  },
+                  "id": 931,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1286:26:7"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 898,
+              "nodeType": "StructuredDocumentation",
+              "src": "371:205:7",
+              "text": " @dev Standard ERC223 function that will handle incoming token transfers.\n @param _from  Token sender address.\n @param _value Amount of tokens.\n @param _data  Transaction metadata."
+            },
+            "functionSelector": "8943ec02",
+            "id": 933,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenReceived",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 905,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 900,
+                  "mutability": "mutable",
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 933,
+                  "src": "605:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 899,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "605:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 902,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 933,
+                  "src": "620:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 901,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "620:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 904,
+                  "mutability": "mutable",
+                  "name": "_data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 933,
+                  "src": "633:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 903,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "633:5:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "604:48:7"
+            },
+            "returnParameters": {
+              "id": 906,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "673:0:7"
+            },
+            "scope": 934,
+            "src": "582:772:7",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 935,
+        "src": "133:1224:7"
+      }
+    ],
+    "src": "37:1320:7"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/IERC223Recipient.sol",
+    "exportedSymbols": {
+      "IERC223Recipient": [
+        934
+      ]
+    },
+    "id": 935,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 884,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "37:23:7"
+      },
+      {
+        "abstract": true,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 885,
+          "nodeType": "StructuredDocumentation",
+          "src": "65:63:7",
+          "text": " @title Contract that will work with ERC223 tokens."
+        },
+        "fullyImplemented": true,
+        "id": 934,
+        "linearizedBaseContracts": [
+          934
+        ],
+        "name": "IERC223Recipient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IERC223Recipient.ERC223TransferInfo",
+            "id": 894,
+            "members": [
+              {
+                "constant": false,
+                "id": 887,
+                "mutability": "mutable",
+                "name": "token_contract",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "218:22:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 886,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "218:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 889,
+                "mutability": "mutable",
+                "name": "sender",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "251:14:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 888,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "251:7:7",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 891,
+                "mutability": "mutable",
+                "name": "value",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "276:13:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 890,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "276:7:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 893,
+                "mutability": "mutable",
+                "name": "data",
+                "nodeType": "VariableDeclaration",
+                "scope": 894,
+                "src": "300:12:7",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes_storage_ptr",
+                  "typeString": "bytes"
+                },
+                "typeName": {
+                  "id": 892,
+                  "name": "bytes",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "300:5:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_storage_ptr",
+                    "typeString": "bytes"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "ERC223TransferInfo",
+            "nodeType": "StructDefinition",
+            "scope": 934,
+            "src": "176:144:7",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 897,
+            "mutability": "mutable",
+            "name": "tkn",
+            "nodeType": "VariableDeclaration",
+            "scope": 934,
+            "src": "332:30:7",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+              "typeString": "struct IERC223Recipient.ERC223TransferInfo"
+            },
+            "typeName": {
+              "id": 896,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 895,
+                "name": "ERC223TransferInfo",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 894,
+                "src": "332:18:7"
+              },
+              "referencedDeclaration": 894,
+              "src": "332:18:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage_ptr",
+                "typeString": "struct IERC223Recipient.ERC223TransferInfo"
+              }
+            },
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 932,
+              "nodeType": "Block",
+              "src": "673:681:7",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 912,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 907,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1169:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 909,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "token_contract",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 887,
+                      "src": "1169:18:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 910,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967281,
+                        "src": "1190:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 911,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "src": "1190:10:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1169:31:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 913,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1169:31:7"
+                },
+                {
+                  "expression": {
+                    "id": 918,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 914,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1211:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 916,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 889,
+                      "src": "1211:10:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 917,
+                      "name": "_from",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 900,
+                      "src": "1232:5:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1211:26:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 919,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1211:26:7"
+                },
+                {
+                  "expression": {
+                    "id": 924,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 920,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1248:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 922,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "value",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 891,
+                      "src": "1248:9:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 923,
+                      "name": "_value",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 902,
+                      "src": "1269:6:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1248:27:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 925,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1248:27:7"
+                },
+                {
+                  "expression": {
+                    "id": 930,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "expression": {
+                        "id": 926,
+                        "name": "tkn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 897,
+                        "src": "1286:3:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ERC223TransferInfo_$894_storage",
+                          "typeString": "struct IERC223Recipient.ERC223TransferInfo storage ref"
+                        }
+                      },
+                      "id": 928,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "data",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 893,
+                      "src": "1286:8:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_storage",
+                        "typeString": "bytes storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 929,
+                      "name": "_data",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 904,
+                      "src": "1307:5:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes memory"
+                      }
+                    },
+                    "src": "1286:26:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage",
+                      "typeString": "bytes storage ref"
+                    }
+                  },
+                  "id": 931,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1286:26:7"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 898,
+              "nodeType": "StructuredDocumentation",
+              "src": "371:205:7",
+              "text": " @dev Standard ERC223 function that will handle incoming token transfers.\n @param _from  Token sender address.\n @param _value Amount of tokens.\n @param _data  Transaction metadata."
+            },
+            "functionSelector": "8943ec02",
+            "id": 933,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "tokenReceived",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 905,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 900,
+                  "mutability": "mutable",
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 933,
+                  "src": "605:13:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 899,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "605:7:7",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 902,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 933,
+                  "src": "620:11:7",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 901,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "620:4:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 904,
+                  "mutability": "mutable",
+                  "name": "_data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 933,
+                  "src": "633:18:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 903,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "633:5:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "604:48:7"
+            },
+            "returnParameters": {
+              "id": 906,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "673:0:7"
+            },
+            "scope": 934,
+            "src": "582:772:7",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "public"
+          }
+        ],
+        "scope": 935,
+        "src": "133:1224:7"
+      }
+    ],
+    "src": "37:1320:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-01-20T13:15:14.444Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "tokenReceived(address,uint256,bytes)": {
+        "details": "Standard ERC223 function that will handle incoming token transfers.",
+        "params": {
+          "_data": "Transaction metadata.",
+          "_from": "Token sender address.",
+          "_value": "Amount of tokens."
+        }
+      }
+    },
+    "title": "Contract that will work with ERC223 tokens.",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
